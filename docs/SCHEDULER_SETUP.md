@@ -11,5 +11,5 @@ $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-NoProfil
 $trigger = New-ScheduledTaskTrigger -Daily -At 08:00AM
 $trigger.RepetitionInterval = (New-TimeSpan -Hours 1)
 $trigger.RepetitionDuration = (New-TimeSpan -Hours 10) # up to 17:00
-Register-ScheduledTask -TaskName "PublishWipInventory" -Trigger $trigger -Action $action -Description "Publish WIP inventory hourly 08–17" -RunLevel Highest
+Register-ScheduledTask -TaskName "PublishWipInventory" -Trigger $trigger -Action $action -Description "Publish WIP inventory hourly 0817" -RunLevel Highest
 ```

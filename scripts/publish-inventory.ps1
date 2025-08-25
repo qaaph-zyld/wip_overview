@@ -56,10 +56,9 @@ $outFile = Join-Path $dataDir "inventory.json"
 $rows | ConvertTo-Json -Depth 10 | Set-Content -Encoding UTF8 $outFile
 "$(Get-Date -Format o)" | Set-Content -Encoding UTF8 (Join-Path $dataDir "last_updated.txt")
 
-# git commit & push
 try { git -C $RepoRoot config user.name  "a265m001-bot" | Out-Null } catch {}
 try { git -C $RepoRoot config user.email "a265m001-bot@example.com" | Out-Null } catch {}
 
 git -C $RepoRoot add site/data/inventory.json site/data/last_updated.txt | Out-Null
 try { git -C $RepoRoot commit -m "data: inventory.json update $(Get-Date -Format 'yyyy-MM-ddTHH:mm:ssK')" | Out-Null } catch {}
-try { git -C $RepoRoot push origin $Branch } catch { Write-Warning "git push failed (likely missing PAT). Store PAT and push again." }
+try { git -C $RepoRoot push origin $Branch } catch { Write-Warning "git push failed (check PAT)" }
